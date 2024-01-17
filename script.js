@@ -171,3 +171,27 @@ const myFavoriteFootballTeam = {
       },
     ],
   };
+
+  // The Object.freeze() disallows the mutation of the myFavoriteFootballTeam object
+Object.freeze(myFavoriteFootballTeam);
+const { sport, team, year, players } = myFavoriteFootballTeam;
+const { coachName } = myFavoriteFootballTeam.headCoach;
+
+typeOfSport.textContent = sport;
+teamName.textContent = team;
+worldCupYear.textContent = year;
+headCoach.textContent = coachName;
+
+
+// constructing each of the player card
+const setPlayerCards = (arr = players) => {
+  playerCards.innerHTML += arr.map(({name, position, number, isCaptain, nickname}) => {
+    `
+      <div class="player-card">${name}${isCaptain === true ? "(Captain)" : ""}</div>
+      <p>Position: ${position}</p>
+      <p>Number: ${number}</p>
+      <p>Nickname: ${nickname !== null ? nickname : "N/A"}</p>
+    `
+  })
+
+}
